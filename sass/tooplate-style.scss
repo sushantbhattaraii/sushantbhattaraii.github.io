@@ -214,6 +214,14 @@ b, strong {
 	}
 }
 
+/* Keep the hover label outside the clip area while preserving the link's hit area. */
+.navbar-expand-lg .navbar-nav .nav-link {
+  padding-top: 0;
+  padding-bottom: 0;
+  border-top: .5rem solid transparent;
+  border-bottom: .5rem solid transparent;
+}
+
 .nav-link {
 	font-weight: $font-weight-bold;
 	font-size: 16px;
