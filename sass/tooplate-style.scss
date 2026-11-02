@@ -28,6 +28,11 @@ $link-font-size: 16px;
 	transition: all 0.4s ease;
 }
 
+/* Reserve the vertical scrollbar width on short and long pages alike. */
+html {
+  overflow-y: scroll;
+}
+
 body {
 	font-family: $font-base;
 	padding-top: 70px;
