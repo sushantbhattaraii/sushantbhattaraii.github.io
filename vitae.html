@@ -3,25 +3,10 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>Sushant Bhattarai</title>
-
+    <meta name="author" content="Sushant Bhattarai">
+    <meta name="description" content="Read or download the curriculum vitae of Sushant Bhattarai, a Computer Science PhD student at Kent State University.">
+    <title>Vitae | Sushant Bhattarai</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/unicons.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
-
-    <link rel="stylesheet" 
-    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" 
-    integrity="sha512-..." 
-    crossorigin="anonymous" 
-    referrerpolicy="no-referrer" />
-
-
-    <!-- MAIN STYLE -->
     <link rel="stylesheet" href="css/tooplate-style.css">
   </head>
   <body>
@@ -63,61 +48,23 @@
           </div>
       </nav>
 
-
-      <section class="about full-screen d-lg-flex justify-content-center align-items-center" id="about" style="padding-top: 15px;">
-        <div class="container">
-            <div class="row">
-                <p></p><h4 style="margin-bottom: 0; margin-left: 62px;">CV - Sushant Bhattarai</h4>
-                <!-- Container for the PDF pages -->
-                <div id="pdfViewer"></div>
-                
-                <!-- PDF.js library -->
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.min.js"></script>
-                <script>
-                    // URL to your PDF file
-                    const pdfUrl = 'docs/Sushant.pdf';
-
-                    // Set up the PDF.js worker
-                    pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.7.107/pdf.worker.min.js';
-
-                    // Asynchronously download the PDF
-                    pdfjsLib.getDocument(pdfUrl).promise.then(pdf => {
-                    const viewer = document.getElementById('pdfViewer');
-
-                    // Loop through each page and render it on a canvas
-                    for (let pageNum = 1; pageNum <= pdf.numPages; pageNum++) {
-                        pdf.getPage(pageNum).then(page => {
-                        const scale = 1.5; // Adjust scale as needed
-                        const viewport = page.getViewport({ scale });
-                        
-                        // Create canvas element for this page
-                        const canvas = document.createElement('canvas');
-                        const context = canvas.getContext('2d');
-                        canvas.height = viewport.height;
-                        canvas.width = viewport.width;
-                        viewer.appendChild(canvas);
-                        
-                        // Render page into canvas context
-                        const renderContext = {
-                            canvasContext: context,
-                            viewport: viewport
-                        };
-                        page.render(renderContext);
-                        });
-                    }
-                    }).catch(error => {
-                    console.error('Error rendering PDF: ', error);
-                    document.getElementById('pdfViewer').innerText = 'An error occurred while loading the CV.';
-                    });
-                </script>
-
-
-            </div>
-
+    <main class="container pt-3">
+      <div class="row">
+        <div class="col-12">
+          <h1>Curriculum Vitae</h1>
+          <p class="mb-4">
+            <a href="docs/Sushant.pdf">Open CV (PDF)</a>
+            <span class="mx-2 text-muted" aria-hidden="true">|</span>
+            <a href="docs/Sushant.pdf" download="Sushant-Bhattarai-CV.pdf">Download CV</a>
+          </p>
+          <object data="docs/Sushant.pdf" type="application/pdf"
+                  aria-label="Sushant Bhattarai’s curriculum vitae"
+                  class="d-block w-100 border" style="height: 80vh;">
+            <p class="p-3"><a href="docs/Sushant.pdf">View the CV in your PDF reader</a></p>
+          </object>
         </div>
-      </section>
-
-
+      </div>
+    </main>
       <!-- FOOTER -->
      <footer class="footer py-5">
         <div class="container">
@@ -130,15 +77,10 @@
              </div>
         </div>
    </footer>
-
-  <script src="js/jquery-3.3.1.min.js"></script>
-  <script src="js/popper.min.js"></script>
-  <script src="js/bootstrap.min.js"></script>
-  <script src="js/Headroom.js"></script>
-  <script src="js/jQuery.headroom.js"></script>
-  <script src="js/owl.carousel.min.js"></script>
-  <script src="js/smoothscroll.js"></script>
-  <script src="js/custom.js"></script>
-
-</body>
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/Headroom.js"></script>
+    <script src="js/jQuery.headroom.js"></script>
+    <script>$(".navbar").headroom();</script>
+  </body>
 </html>
