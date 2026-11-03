@@ -53,6 +53,10 @@
     }
 
     const href = link.getAttribute("href").trim();
+    if (href === "research.html#research-interests") {
+      link.removeAttribute("target");
+      continue;
+    }
     if (!href || href.startsWith("#")) continue;
     if (!["http:", "https:", "file:"].includes(link.protocol)) continue;
 
