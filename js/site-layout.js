@@ -21,7 +21,7 @@
   document.getElementById("site-navbar").outerHTML = `
     <nav class="navbar navbar-expand-lg navbar-light" aria-label="Main navigation">
       <div class="container" style="position:fixed;top:0;right:0;left:0;z-index:1030;background-color:white;border-bottom:1px solid black;">
-        <a class="navbar-brand" href="index.html"><img src="images/logo.png" alt="Sushant Bhattarai home"></a>
+        <a class="navbar-brand" href="index.html"><img src="images/logo.svg" width="160" height="48" alt="Sushant Bhattarai home"></a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -42,4 +42,21 @@
         <p class="copyright-text text-center${positionClass}">Copyright &copy; ${new Date().getFullYear()} Sushant Bhattarai | All rights reserved</p>
       </div>
     </footer>`;
+
+  // Keep normal navigation in this tab; open linked pages and documents separately.
+  for (const link of document.querySelectorAll("a[href]:not([download])")) {
+    if (link.closest("nav, footer")) continue;
+
+    if (link.protocol === "mailto:" || link.protocol === "tel:") {
+      link.removeAttribute("target");
+      continue;
+    }
+
+    const href = link.getAttribute("href").trim();
+    if (!href || href.startsWith("#")) continue;
+    if (!["http:", "https:", "file:"].includes(link.protocol)) continue;
+
+    link.target = "_blank";
+    link.relList.add("noopener");
+  }
 })();
