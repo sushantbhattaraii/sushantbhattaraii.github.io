@@ -43,24 +43,20 @@
       </div>
     </footer>`;
 
-  // Keep normal navigation in this tab; open linked pages and documents separately.
+    // Open internal links in this tab and external websites in a new tab.
   for (const link of document.querySelectorAll("a[href]:not([download])")) {
-    if (link.closest("nav, footer")) continue;
-
     if (link.protocol === "mailto:" || link.protocol === "tel:") {
       link.removeAttribute("target");
       continue;
     }
 
-    const href = link.getAttribute("href").trim();
-    if (href === "research.html#research-interests") {
-      link.removeAttribute("target");
-      continue;
-    }
-    if (!href || href.startsWith("#")) continue;
     if (!["http:", "https:", "file:"].includes(link.protocol)) continue;
 
-    link.target = "_blank";
-    link.relList.add("noopener");
+    if (link.origin === location.origin) {
+      link.removeAttribute("target");
+    } else {
+      link.target = "_blank";
+      link.relList.add("noopener");
+    }
   }
 })();
